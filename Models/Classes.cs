@@ -7,19 +7,19 @@ public class Film
 {
     public string Title { get; set; }
     public string Studio { get; set; }
-    public List<string> Genres { get; set; }
+    public string Genres { get; set; }
     public string ReleaseYear { get; set; }
     public string Director { get; set; }
     public List<string> Cast { get; set; }
     public string Summary { get; set; }
-    public double Rating { get; set; }
-    public List<string> Location { get; set; }
+    public float Rating { get; set; }
+    public string Location { get; set; }
     public double Size { get; set; }
 }
 
 public class FilmLibrary
 {
-    private List<Film> films;
+    public List<Film> films;
     private string filePath = "filmLibrary.json";
 
     public FilmLibrary()
@@ -42,13 +42,13 @@ public class FilmLibrary
             {
                 Title = $"Title{i}",
                 Studio = $"Studio{i}",
-                Genres = new List<string> { "Action", "Drama" },
+                Genres = "Action, Drama",
                 ReleaseYear = $"{i}",
                 Director = $"Director{i}",
                 Cast = new List<string> { "actor1", "actor2"},
                 Summary = "summary",
                 Rating = i,
-                Location = new List<string> { $"Location{i}"},
+                Location = $"Location{i}",
                 Size = i * 60
             });
         }
@@ -82,7 +82,7 @@ public class FilmLibrary
         foreach (var f in films)
         {
             // && f.Genres.Contains(Genre) && f.Director.Contains(Director) && f.Location.Contains(Location)
-            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && (string.IsNullOrEmpty(Genre) || f.Genres.Contains(Genre)) && (string.IsNullOrEmpty(Location) || f.Location.Contains(Location)) && f.Director.Contains(Director))
+            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && (string.IsNullOrEmpty(Location) || f.Location.Contains(Location)) && f.Director.Contains(Director))
             {
                 result.Add(f);
             }
@@ -90,7 +90,7 @@ public class FilmLibrary
         return result;
     }
 
-    public void SearchFilmsByGenres(List<string> genres)
+    /*public void SearchFilmsByGenres(List<string> genres)
     {
         if (genres == null || genres.Count == 0)
         {
@@ -112,7 +112,7 @@ public class FilmLibrary
         {
             Console.WriteLine("Фільми за вказаними жанрами не знайдені.");
         }
-    }
+    }*/
 
 
     public void ClearLibrary()

@@ -1,6 +1,6 @@
 ﻿namespace WinForms_Filmoteka
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             button1 = new Button();
             button2 = new Button();
             NameBox = new TextBox();
@@ -68,8 +68,7 @@
             toolStripSeparator4 = new ToolStripSeparator();
             выбратьвсеToolStripMenuItem = new ToolStripMenuItem();
             инструментыToolStripMenuItem = new ToolStripMenuItem();
-            настройкиToolStripMenuItem = new ToolStripMenuItem();
-            параметрыToolStripMenuItem = new ToolStripMenuItem();
+            очиститиПоляToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
             содержимоеToolStripMenuItem = new ToolStripMenuItem();
             индексToolStripMenuItem = new ToolStripMenuItem();
@@ -77,6 +76,14 @@
             toolStripSeparator5 = new ToolStripSeparator();
             опрограммеToolStripMenuItem = new ToolStripMenuItem();
             filmLibraryBindingSource = new BindingSource(components);
+            label7 = new Label();
+            RatingBox = new TextBox();
+            label8 = new Label();
+            SummaryBox = new TextBox();
+            label9 = new Label();
+            SizeBox = new TextBox();
+            label10 = new Label();
+            StudioBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)filmBindingSource).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)filmLibraryBindingSource).BeginInit();
@@ -84,7 +91,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(523, 271);
+            button1.Location = new Point(523, 248);
             button1.Name = "button1";
             button1.Size = new Size(215, 57);
             button1.TabIndex = 0;
@@ -100,6 +107,7 @@
             button2.TabIndex = 1;
             button2.Text = "Внести новий фільм";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // NameBox
             // 
@@ -110,14 +118,14 @@
             // 
             // YearBox
             // 
-            YearBox.Location = new Point(143, 92);
+            YearBox.Location = new Point(143, 78);
             YearBox.Name = "YearBox";
             YearBox.Size = new Size(254, 27);
             YearBox.TabIndex = 3;
             // 
             // GenreBox
             // 
-            GenreBox.Location = new Point(143, 138);
+            GenreBox.Location = new Point(143, 111);
             GenreBox.Name = "GenreBox";
             GenreBox.Size = new Size(254, 27);
             GenreBox.TabIndex = 4;
@@ -134,7 +142,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 99);
+            label2.Location = new Point(36, 85);
             label2.Name = "label2";
             label2.Size = new Size(80, 20);
             label2.TabIndex = 6;
@@ -143,7 +151,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 145);
+            label3.Location = new Point(36, 118);
             label3.Name = "label3";
             label3.Size = new Size(48, 20);
             label3.TabIndex = 7;
@@ -152,16 +160,16 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(419, 145);
+            label4.Location = new Point(419, 118);
             label4.Name = "label4";
-            label4.Size = new Size(56, 20);
+            label4.Size = new Size(63, 20);
             label4.TabIndex = 13;
-            label4.Text = "Країна";
+            label4.Text = "Сервіси";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(419, 99);
+            label5.Location = new Point(419, 85);
             label5.Name = "label5";
             label5.Size = new Size(59, 20);
             label5.TabIndex = 12;
@@ -178,14 +186,14 @@
             // 
             // LocationBox
             // 
-            LocationBox.Location = new Point(523, 138);
+            LocationBox.Location = new Point(523, 111);
             LocationBox.Name = "LocationBox";
             LocationBox.Size = new Size(254, 27);
             LocationBox.TabIndex = 10;
             // 
             // ActorBox
             // 
-            ActorBox.Location = new Point(523, 92);
+            ActorBox.Location = new Point(523, 78);
             ActorBox.Name = "ActorBox";
             ActorBox.Size = new Size(254, 27);
             ActorBox.TabIndex = 9;
@@ -207,6 +215,7 @@
             ResultListBox.Size = new Size(457, 164);
             ResultListBox.TabIndex = 14;
             ResultListBox.ValueMember = "ReleaseYear";
+            ResultListBox.DoubleClick += ResultListBox_DoubleClick;
             // 
             // filmBindingSource
             // 
@@ -366,22 +375,17 @@
             // 
             // инструментыToolStripMenuItem
             // 
-            инструментыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, параметрыToolStripMenuItem });
+            инструментыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { очиститиПоляToolStripMenuItem });
             инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
-            инструментыToolStripMenuItem.Size = new Size(117, 24);
-            инструментыToolStripMenuItem.Text = "&Инструменты";
+            инструментыToolStripMenuItem.Size = new Size(108, 24);
+            инструментыToolStripMenuItem.Text = "&Інструменти";
             // 
-            // настройкиToolStripMenuItem
+            // очиститиПоляToolStripMenuItem
             // 
-            настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            настройкиToolStripMenuItem.Size = new Size(173, 26);
-            настройкиToolStripMenuItem.Text = "&Настройки";
-            // 
-            // параметрыToolStripMenuItem
-            // 
-            параметрыToolStripMenuItem.Name = "параметрыToolStripMenuItem";
-            параметрыToolStripMenuItem.Size = new Size(173, 26);
-            параметрыToolStripMenuItem.Text = "&Параметры";
+            очиститиПоляToolStripMenuItem.Name = "очиститиПоляToolStripMenuItem";
+            очиститиПоляToolStripMenuItem.Size = new Size(195, 26);
+            очиститиПоляToolStripMenuItem.Text = "Очистити поля";
+            очиститиПоляToolStripMenuItem.Click += очиститиПоляToolStripMenuItem_Click;
             // 
             // справкаToolStripMenuItem
             // 
@@ -423,11 +427,84 @@
             // 
             filmLibraryBindingSource.DataSource = typeof(FilmLibrary);
             // 
-            // Form1
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(419, 151);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 20);
+            label7.TabIndex = 19;
+            label7.Text = "Рейтинг";
+            // 
+            // RatingBox
+            // 
+            RatingBox.Location = new Point(523, 144);
+            RatingBox.Name = "RatingBox";
+            RatingBox.Size = new Size(254, 27);
+            RatingBox.TabIndex = 18;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(36, 151);
+            label8.Name = "label8";
+            label8.Size = new Size(45, 20);
+            label8.TabIndex = 17;
+            label8.Text = "Опис";
+            // 
+            // SummaryBox
+            // 
+            SummaryBox.Location = new Point(143, 144);
+            SummaryBox.Name = "SummaryBox";
+            SummaryBox.Size = new Size(254, 27);
+            SummaryBox.TabIndex = 16;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(36, 184);
+            label9.Name = "label9";
+            label9.Size = new Size(66, 20);
+            label9.TabIndex = 21;
+            label9.Text = "Час (хв.)";
+            // 
+            // SizeBox
+            // 
+            SizeBox.Location = new Point(143, 177);
+            SizeBox.Name = "SizeBox";
+            SizeBox.Size = new Size(254, 27);
+            SizeBox.TabIndex = 20;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(419, 184);
+            label10.Name = "label10";
+            label10.Size = new Size(51, 20);
+            label10.TabIndex = 23;
+            label10.Text = "Студія";
+            // 
+            // StudioBox
+            // 
+            StudioBox.Location = new Point(523, 177);
+            StudioBox.Name = "StudioBox";
+            StudioBox.Size = new Size(254, 27);
+            StudioBox.TabIndex = 22;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(236, 234, 193);
             ClientSize = new Size(800, 450);
+            Controls.Add(label10);
+            Controls.Add(StudioBox);
+            Controls.Add(label9);
+            Controls.Add(SizeBox);
+            Controls.Add(label7);
+            Controls.Add(RatingBox);
+            Controls.Add(label8);
+            Controls.Add(SummaryBox);
             Controls.Add(ResultListBox);
             Controls.Add(label4);
             Controls.Add(label5);
@@ -447,8 +524,8 @@
             MainMenuStrip = menuStrip1;
             MaximumSize = new Size(818, 497);
             MinimumSize = new Size(818, 497);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "MainForm";
+            Text = "Кінотека";
             ((System.ComponentModel.ISupportInitialize)filmBindingSource).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -496,8 +573,6 @@
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem выбратьвсеToolStripMenuItem;
         private ToolStripMenuItem инструментыToolStripMenuItem;
-        private ToolStripMenuItem настройкиToolStripMenuItem;
-        private ToolStripMenuItem параметрыToolStripMenuItem;
         private ToolStripMenuItem справкаToolStripMenuItem;
         private ToolStripMenuItem содержимоеToolStripMenuItem;
         private ToolStripMenuItem индексToolStripMenuItem;
@@ -506,5 +581,14 @@
         private ToolStripMenuItem опрограммеToolStripMenuItem;
         private BindingSource filmBindingSource;
         private BindingSource filmLibraryBindingSource;
+        private Label label7;
+        private TextBox RatingBox;
+        private Label label8;
+        private TextBox SummaryBox;
+        private Label label9;
+        private TextBox SizeBox;
+        private Label label10;
+        private TextBox StudioBox;
+        private ToolStripMenuItem очиститиПоляToolStripMenuItem;
     }
 }
