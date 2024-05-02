@@ -1,6 +1,6 @@
 ﻿namespace WinForms_Filmoteka.Forms
 {
-    partial class Form2
+    partial class SelectedForm
     {
         /// <summary>
         /// Required designer variable.

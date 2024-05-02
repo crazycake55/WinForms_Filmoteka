@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace WinForms_Filmoteka.Forms
 {
-    public partial class Form2 : Form
+    public partial class SelectedForm : Form
     {
         readonly Film film = new Film();
-        public Form2(Film film)
+        public SelectedForm(Film film)
         {
             InitializeComponent();
 

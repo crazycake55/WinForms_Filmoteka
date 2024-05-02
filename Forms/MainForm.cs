@@ -5,8 +5,10 @@ namespace WinForms_Filmoteka
     public partial class MainForm : Form
     {
         FilmLibrary Library = new FilmLibrary();
+        
         public MainForm()
         {
+            Library.LoadLibraryFromFile();
             InitializeComponent();
         }
 
@@ -54,7 +56,7 @@ namespace WinForms_Filmoteka
             if(ResultListBox.SelectedItems.Count > 0)
             {
                 Film film = ResultListBox.SelectedItem as Film;
-                var filmInfoForm = new Form2(film);
+                var filmInfoForm = new SelectedForm(film);
                 filmInfoForm.Show();
             }
         }

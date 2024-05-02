@@ -25,7 +25,7 @@ public class FilmLibrary
     public FilmLibrary()
     {
         films = new List<Film>();
-        this.Fill();
+        /*this.Fill();*/
     }
 
     public void AddFilm(Film film)
