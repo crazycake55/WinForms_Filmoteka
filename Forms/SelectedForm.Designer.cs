@@ -48,6 +48,8 @@
             GenreBox = new TextBox();
             YearBox = new TextBox();
             NameBox = new TextBox();
+            buttonSave = new Button();
+            buttonAddTo = new Button();
             SuspendLayout();
             // 
             // label10
@@ -230,12 +232,34 @@
             NameBox.Size = new Size(254, 27);
             NameBox.TabIndex = 24;
             // 
-            // Form2
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(540, 343);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(227, 60);
+            buttonSave.TabIndex = 44;
+            buttonSave.Text = "Зберегти зміни";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // buttonAddTo
+            // 
+            buttonAddTo.Location = new Point(307, 343);
+            buttonAddTo.Name = "buttonAddTo";
+            buttonAddTo.Size = new Size(227, 60);
+            buttonAddTo.TabIndex = 45;
+            buttonAddTo.Text = "Додати до колекції";
+            buttonAddTo.UseVisualStyleBackColor = true;
+            buttonAddTo.Click += buttonAddTo_Click;
+            // 
+            // SelectedForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(236, 234, 193);
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonAddTo);
+            Controls.Add(buttonSave);
             Controls.Add(label10);
             Controls.Add(StudioBox);
             Controls.Add(label9);
@@ -256,7 +280,7 @@
             Controls.Add(GenreBox);
             Controls.Add(YearBox);
             Controls.Add(NameBox);
-            Name = "Form2";
+            Name = "SelectedForm";
             Text = "Form2";
             ResumeLayout(false);
             PerformLayout();
@@ -284,5 +308,7 @@
         private TextBox GenreBox;
         private TextBox YearBox;
         private TextBox NameBox;
+        private Button buttonSave;
+        private Button buttonAddTo;
     }
 }

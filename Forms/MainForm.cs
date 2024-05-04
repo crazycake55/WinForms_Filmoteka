@@ -4,8 +4,12 @@ namespace WinForms_Filmoteka
 {
     public partial class MainForm : Form
     {
-        FilmLibrary Library = new FilmLibrary();
-        
+        FilmLibrary Library = new FilmLibrary("filmLibrary.json");
+        List<FilmLibrary> Collections = new List<FilmLibrary>();
+        FilmLibrary favourite = new FilmLibrary("favourite.json");
+        FilmLibrary seen = new FilmLibrary("seen.json");
+
+
         public MainForm()
         {
             Library.LoadLibraryFromFile();
@@ -14,8 +18,7 @@ namespace WinForms_Filmoteka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string Title, string ReleaseYear, string Genre, string Director, string Location
-            var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim());
+            var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim(), double.TryParse(SizeBox.Text.Trim(), out double num) ? num : null , ActorBox.Text.Trim());
 
             filmBindingSource.DataSource = result;
         }
@@ -33,7 +36,7 @@ namespace WinForms_Filmoteka
                 Rating = float.Parse(RatingBox.Text.Trim()),
                 Size = double.Parse(SizeBox.Text.Trim()),
                 Studio = StudioBox.Text.Trim(),
-                Cast = ActorBox.Text.Trim().Split(", ").ToList()
+                Cast = ActorBox.Text.Trim()
             });
         }
 
@@ -53,12 +56,17 @@ namespace WinForms_Filmoteka
 
         private void ResultListBox_DoubleClick(object sender, EventArgs e)
         {
-            if(ResultListBox.SelectedItems.Count > 0)
+            if (ResultListBox.SelectedItems.Count > 0)
             {
                 Film film = ResultListBox.SelectedItem as Film;
-                var filmInfoForm = new SelectedForm(film);
+                var filmInfoForm = new SelectedForm(film, Library, Collections);
                 filmInfoForm.Show();
             }
+        }
+
+        private void buttonLikeThis_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

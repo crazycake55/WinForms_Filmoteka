@@ -10,7 +10,7 @@ public class Film
     public string Genres { get; set; }
     public string ReleaseYear { get; set; }
     public string Director { get; set; }
-    public List<string> Cast { get; set; }
+    public string Cast { get; set; }
     public string Summary { get; set; }
     public float Rating { get; set; }
     public string Location { get; set; }
@@ -20,11 +20,12 @@ public class Film
 public class FilmLibrary
 {
     public List<Film> films;
-    private string filePath = "filmLibrary.json";
+    private string filePath;
 
-    public FilmLibrary()
+    public FilmLibrary(string path)
     {
         films = new List<Film>();
+        filePath = path;
         /*this.Fill();*/
     }
 
@@ -34,7 +35,7 @@ public class FilmLibrary
         SaveLibraryToFile();
     }
 
-    void Fill()
+    public void Fill()
     {
         for(int i = 0; i <= 10; i++)
         {
@@ -45,7 +46,7 @@ public class FilmLibrary
                 Genres = "Action, Drama",
                 ReleaseYear = $"{i}",
                 Director = $"Director{i}",
-                Cast = new List<string> { "actor1", "actor2"},
+                Cast = "actor1, actor2",
                 Summary = "summary",
                 Rating = i,
                 Location = $"Location{i}",
@@ -74,7 +75,7 @@ public class FilmLibrary
         return films.Exists(f => f.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
 
-    public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location)
+    public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast)
     {
 
         //
@@ -82,7 +83,7 @@ public class FilmLibrary
         foreach (var f in films)
         {
             // && f.Genres.Contains(Genre) && f.Director.Contains(Director) && f.Location.Contains(Location)
-            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && (string.IsNullOrEmpty(Location) || f.Location.Contains(Location)) && f.Director.Contains(Director))
+            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && f.Location.Contains(Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) && f.Cast.Contains(Cast))
             {
                 result.Add(f);
             }
