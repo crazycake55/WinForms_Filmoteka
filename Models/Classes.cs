@@ -75,7 +75,7 @@ public class FilmLibrary
         return films.Exists(f => f.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
 
-    public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast)
+    public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast, string Studio, float? Rating)
     {
 
         //
@@ -83,7 +83,7 @@ public class FilmLibrary
         foreach (var f in films)
         {
             // && f.Genres.Contains(Genre) && f.Director.Contains(Director) && f.Location.Contains(Location)
-            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && f.Location.Contains(Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) && f.Cast.Contains(Cast))
+            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && f.Location.Contains(Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) && f.Cast.Contains(Cast) && f.Studio.Contains(Studio) && (f.Rating == Rating || Rating == null))
             {
                 result.Add(f);
             }
