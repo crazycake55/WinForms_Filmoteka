@@ -6,21 +6,21 @@ namespace WinForms_Filmoteka
     {
         FilmLibrary Library = new FilmLibrary("filmLibrary.json");
         List<FilmLibrary> Collections = new List<FilmLibrary>();
-        FilmLibrary favourite = new FilmLibrary("favourite.json");
+        FilmLibrary wantTo = new FilmLibrary("wantTo.json");
         FilmLibrary seen = new FilmLibrary("seen.json");
 
 
         public MainForm()
         {
             Library.LoadLibraryFromFile();
-            favourite.LoadLibraryFromFile();
+            wantTo.LoadLibraryFromFile();
             seen.LoadLibraryFromFile();
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim(), double.TryParse(SizeBox.Text.Trim(), out double num) ? num : null , ActorBox.Text.Trim(), StudioBox.Text.Trim(), float.TryParse(RatingBox.Text.Trim(), out float numb) ? numb : null);
+            var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim(), double.TryParse(SizeBox.Text.Trim(), out double num) ? num : null, ActorBox.Text.Trim(), StudioBox.Text.Trim(), float.TryParse(RatingBox.Text.Trim(), out float numb) ? numb : null);
 
             filmBindingSource.DataSource = result;
         }
@@ -122,10 +122,23 @@ namespace WinForms_Filmoteka
             if (ResultListBox.SelectedItems.Count > 0)
             {
                 Film film = ResultListBox.SelectedItem as Film;
-                var filmInfoForm = new SelectedForm(film, Library, Collections);
+                var filmInfoForm = new SelectedForm(film, Library, Collections, seen, wantTo);
                 filmInfoForm.Show();
             }
         }
 
+        private void seenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = seen.SearchFilms("", "", "", "", "", null, "", "", null);
+
+            filmBindingSource.DataSource = result;
+        }
+
+        private void õî÷óÏåðåãëÿíóòèToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = wantTo.SearchFilms("", "", "", "", "", null, "", "", null);
+
+            filmBindingSource.DataSource = result;
+        }
     }
 }

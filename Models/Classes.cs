@@ -78,11 +78,9 @@ public class FilmLibrary
     public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast, string Studio, float? Rating)
     {
 
-        //
         var result = new List<Film>();
         foreach (var f in films)
         {
-            // && f.Genres.Contains(Genre) && f.Director.Contains(Director) && f.Location.Contains(Location)
             if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && f.Location.Contains(Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) && f.Cast.Contains(Cast) && f.Studio.Contains(Studio) && (f.Rating == Rating || Rating == null))
             {
                 result.Add(f);
@@ -91,30 +89,11 @@ public class FilmLibrary
         return result;
     }
 
-    /*public void SearchFilmsByGenres(List<string> genres)
+    public void RemoveFilm(Film film)
     {
-        if (genres == null || genres.Count == 0)
-        {
-            Console.WriteLine("Список жанрів для пошуку порожній.");
-            return;
-        }
-
-        List<Film> foundFilms = films.FindAll(film => film.Genres.All(genres.Contains));
-
-        if (foundFilms.Count > 0)
-        {
-            Console.WriteLine("Знайдені фільми за жанрами:");
-            foreach (var film in foundFilms)
-            {
-                Console.WriteLine($"Назва: {film.Title}, Жанри: {string.Join(", ", film.Genres)}, Рік: {film.ReleaseYear}");
-            }
-        }
-        else
-        {
-            Console.WriteLine("Фільми за вказаними жанрами не знайдені.");
-        }
-    }*/
-
+        films.Remove(film);
+        SaveLibraryToFile();
+    }
 
     public void ClearLibrary()
     {

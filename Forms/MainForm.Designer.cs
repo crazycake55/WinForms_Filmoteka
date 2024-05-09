@@ -61,7 +61,7 @@
             изменитьToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
-            переглянутиToolStripMenuItem = new ToolStripMenuItem();
+            seenToolStripMenuItem = new ToolStripMenuItem();
             очиститиToolStripMenuItem = new ToolStripMenuItem();
             инструментыToolStripMenuItem = new ToolStripMenuItem();
             очиститиПоляToolStripMenuItem = new ToolStripMenuItem();
@@ -79,6 +79,7 @@
             label10 = new Label();
             StudioBox = new TextBox();
             buttonLikeThis = new Button();
+            хочуПереглянутиToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)filmBindingSource).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)filmLibraryBindingSource).BeginInit();
@@ -306,7 +307,7 @@
             // 
             // изменитьToolStripMenuItem
             // 
-            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, переглянутиToolStripMenuItem, очиститиToolStripMenuItem });
+            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem, очиститиToolStripMenuItem });
             изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             изменитьToolStripMenuItem.Size = new Size(81, 24);
             изменитьToolStripMenuItem.Text = "&Колекції";
@@ -314,23 +315,24 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(178, 6);
+            toolStripSeparator3.Size = new Size(221, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(178, 6);
+            toolStripSeparator4.Size = new Size(221, 6);
             // 
-            // переглянутиToolStripMenuItem
+            // seenToolStripMenuItem
             // 
-            переглянутиToolStripMenuItem.Name = "переглянутиToolStripMenuItem";
-            переглянутиToolStripMenuItem.Size = new Size(181, 26);
-            переглянутиToolStripMenuItem.Text = "Переглянути";
+            seenToolStripMenuItem.Name = "seenToolStripMenuItem";
+            seenToolStripMenuItem.Size = new Size(224, 26);
+            seenToolStripMenuItem.Text = "Переглянув";
+            seenToolStripMenuItem.Click += seenToolStripMenuItem_Click;
             // 
             // очиститиToolStripMenuItem
             // 
             очиститиToolStripMenuItem.Name = "очиститиToolStripMenuItem";
-            очиститиToolStripMenuItem.Size = new Size(181, 26);
+            очиститиToolStripMenuItem.Size = new Size(224, 26);
             очиститиToolStripMenuItem.Text = "Очистити";
             // 
             // инструментыToolStripMenuItem
@@ -449,6 +451,13 @@
             buttonLikeThis.UseVisualStyleBackColor = true;
             buttonLikeThis.Click += buttonLikeThis_Click;
             // 
+            // хочуПереглянутиToolStripMenuItem
+            // 
+            хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
+            хочуПереглянутиToolStripMenuItem.Size = new Size(224, 26);
+            хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
+            хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -542,7 +551,8 @@
         private TextBox StudioBox;
         private ToolStripMenuItem очиститиПоляToolStripMenuItem;
         private ToolStripMenuItem очиститиToolStripMenuItem;
-        private ToolStripMenuItem переглянутиToolStripMenuItem;
+        private ToolStripMenuItem seenToolStripMenuItem;
         private Button buttonLikeThis;
+        private ToolStripMenuItem хочуПереглянутиToolStripMenuItem;
     }
 }

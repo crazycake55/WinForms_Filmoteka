@@ -49,7 +49,7 @@
             YearBox = new TextBox();
             NameBox = new TextBox();
             buttonSave = new Button();
-            buttonAddTo = new Button();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label10
@@ -242,15 +242,14 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
-            // buttonAddTo
+            // comboBox1
             // 
-            buttonAddTo.Location = new Point(307, 343);
-            buttonAddTo.Name = "buttonAddTo";
-            buttonAddTo.Size = new Size(227, 60);
-            buttonAddTo.TabIndex = 45;
-            buttonAddTo.Text = "Додати до колекції";
-            buttonAddTo.UseVisualStyleBackColor = true;
-            buttonAddTo.Click += buttonAddTo_Click;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "-", "Дивився", "Хочу подивитись" });
+            comboBox1.Location = new Point(26, 254);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(308, 28);
+            comboBox1.TabIndex = 45;
             // 
             // SelectedForm
             // 
@@ -258,7 +257,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(236, 234, 193);
             ClientSize = new Size(800, 450);
-            Controls.Add(buttonAddTo);
+            Controls.Add(comboBox1);
             Controls.Add(buttonSave);
             Controls.Add(label10);
             Controls.Add(StudioBox);
@@ -280,6 +279,8 @@
             Controls.Add(GenreBox);
             Controls.Add(YearBox);
             Controls.Add(NameBox);
+            MaximumSize = new Size(818, 497);
+            MinimumSize = new Size(818, 497);
             Name = "SelectedForm";
             Text = "Form2";
             ResumeLayout(false);
@@ -309,6 +310,6 @@
         private TextBox YearBox;
         private TextBox NameBox;
         private Button buttonSave;
-        private Button buttonAddTo;
+        private ComboBox comboBox1;
     }
 }
