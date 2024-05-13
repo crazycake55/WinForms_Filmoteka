@@ -81,12 +81,26 @@ public class FilmLibrary
         var result = new List<Film>();
         foreach (var f in films)
         {
-            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) && f.Location.Contains(Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) && f.Cast.Contains(Cast) && f.Studio.Contains(Studio) && (f.Rating == Rating || Rating == null))
+            if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) 
+                && CheckIfAllElementsInString(Location.Split(", "), f.Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) 
+                && CheckIfAllElementsInString(Cast.Split(", "), f.Cast) && f.Studio.Contains(Studio) && (f.Rating == Rating || Rating == null))
             {
                 result.Add(f);
             }
         }
         return result;
+    }
+
+    static bool CheckIfAllElementsInString(string[] array, string searchString)
+    {
+        foreach (var item in array)
+        {
+            if (!searchString.Contains(item))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void RemoveFilm(Film film)
