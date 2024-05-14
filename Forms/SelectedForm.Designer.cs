@@ -245,7 +245,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "-", "Дивився", "Хочу подивитись" });
+            comboBox1.Items.AddRange(new object[] { "-", "Переглянув", "Хочу переглянути" });
             comboBox1.Location = new Point(26, 254);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(308, 28);

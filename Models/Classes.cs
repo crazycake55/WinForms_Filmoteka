@@ -70,11 +70,6 @@ public class FilmLibrary
         }
     }
 
-    public bool CheckFilmAvailability(string title)
-    {
-        return films.Exists(f => f.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
-    }
-
     public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast, string Studio, float? Rating)
     {
 

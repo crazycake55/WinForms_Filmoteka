@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             button1 = new Button();
             button2 = new Button();
             NameBox = new TextBox();
@@ -47,28 +46,13 @@
             ResultListBox = new ListBox();
             filmBindingSource = new BindingSource(components);
             menuStrip1 = new MenuStrip();
-            файлToolStripMenuItem = new ToolStripMenuItem();
-            создатьToolStripMenuItem = new ToolStripMenuItem();
-            открытьToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator = new ToolStripSeparator();
-            сохранитьToolStripMenuItem = new ToolStripMenuItem();
-            сохранитькакToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            печатьToolStripMenuItem = new ToolStripMenuItem();
-            предварительныйпросмотрToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
-            выходToolStripMenuItem = new ToolStripMenuItem();
             изменитьToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
             seenToolStripMenuItem = new ToolStripMenuItem();
-            очиститиToolStripMenuItem = new ToolStripMenuItem();
+            хочуПереглянутиToolStripMenuItem = new ToolStripMenuItem();
             инструментыToolStripMenuItem = new ToolStripMenuItem();
             очиститиПоляToolStripMenuItem = new ToolStripMenuItem();
-            справкаToolStripMenuItem = new ToolStripMenuItem();
-            содержимоеToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator5 = new ToolStripSeparator();
-            опрограммеToolStripMenuItem = new ToolStripMenuItem();
             filmLibraryBindingSource = new BindingSource(components);
             label7 = new Label();
             RatingBox = new TextBox();
@@ -79,7 +63,6 @@
             label10 = new Label();
             StudioBox = new TextBox();
             buttonLikeThis = new Button();
-            хочуПереглянутиToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)filmBindingSource).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)filmLibraryBindingSource).BeginInit();
@@ -220,94 +203,16 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, изменитьToolStripMenuItem, инструментыToolStripMenuItem, справкаToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { изменитьToolStripMenuItem, инструментыToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 28);
             menuStrip1.TabIndex = 15;
             menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
-            // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { создатьToolStripMenuItem, открытьToolStripMenuItem, toolStripSeparator, сохранитьToolStripMenuItem, сохранитькакToolStripMenuItem, toolStripSeparator1, печатьToolStripMenuItem, предварительныйпросмотрToolStripMenuItem, toolStripSeparator2, выходToolStripMenuItem });
-            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(59, 24);
-            файлToolStripMenuItem.Text = "&Файл";
-            // 
-            // создатьToolStripMenuItem
-            // 
-            создатьToolStripMenuItem.Image = (Image)resources.GetObject("создатьToolStripMenuItem.Image");
-            создатьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            создатьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            создатьToolStripMenuItem.Size = new Size(294, 26);
-            создатьToolStripMenuItem.Text = "&Создать";
-            // 
-            // открытьToolStripMenuItem
-            // 
-            открытьToolStripMenuItem.Image = (Image)resources.GetObject("открытьToolStripMenuItem.Image");
-            открытьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            открытьToolStripMenuItem.Size = new Size(294, 26);
-            открытьToolStripMenuItem.Text = "&Открыть";
-            // 
-            // toolStripSeparator
-            // 
-            toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new Size(291, 6);
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            сохранитьToolStripMenuItem.Image = (Image)resources.GetObject("сохранитьToolStripMenuItem.Image");
-            сохранитьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            сохранитьToolStripMenuItem.Size = new Size(294, 26);
-            сохранитьToolStripMenuItem.Text = "&Сохранить";
-            // 
-            // сохранитькакToolStripMenuItem
-            // 
-            сохранитькакToolStripMenuItem.Name = "сохранитькакToolStripMenuItem";
-            сохранитькакToolStripMenuItem.Size = new Size(294, 26);
-            сохранитькакToolStripMenuItem.Text = "Сохранить &как";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(291, 6);
-            // 
-            // печатьToolStripMenuItem
-            // 
-            печатьToolStripMenuItem.Image = (Image)resources.GetObject("печатьToolStripMenuItem.Image");
-            печатьToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            печатьToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-            печатьToolStripMenuItem.Size = new Size(294, 26);
-            печатьToolStripMenuItem.Text = "&Печать";
-            // 
-            // предварительныйпросмотрToolStripMenuItem
-            // 
-            предварительныйпросмотрToolStripMenuItem.Image = (Image)resources.GetObject("предварительныйпросмотрToolStripMenuItem.Image");
-            предварительныйпросмотрToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            предварительныйпросмотрToolStripMenuItem.Name = "предварительныйпросмотрToolStripMenuItem";
-            предварительныйпросмотрToolStripMenuItem.Size = new Size(294, 26);
-            предварительныйпросмотрToolStripMenuItem.Text = "Предварительный про&смотр";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(291, 6);
-            // 
-            // выходToolStripMenuItem
-            // 
-            выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(294, 26);
-            выходToolStripMenuItem.Text = "Вы&ход";
-            // 
             // изменитьToolStripMenuItem
             // 
-            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem, очиститиToolStripMenuItem });
+            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem });
             изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             изменитьToolStripMenuItem.Size = new Size(81, 24);
             изменитьToolStripMenuItem.Text = "&Колекції";
@@ -329,11 +234,12 @@
             seenToolStripMenuItem.Text = "Переглянув";
             seenToolStripMenuItem.Click += seenToolStripMenuItem_Click;
             // 
-            // очиститиToolStripMenuItem
+            // хочуПереглянутиToolStripMenuItem
             // 
-            очиститиToolStripMenuItem.Name = "очиститиToolStripMenuItem";
-            очиститиToolStripMenuItem.Size = new Size(224, 26);
-            очиститиToolStripMenuItem.Text = "Очистити";
+            хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
+            хочуПереглянутиToolStripMenuItem.Size = new Size(224, 26);
+            хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
+            хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
             // 
             // инструментыToolStripMenuItem
             // 
@@ -345,33 +251,9 @@
             // очиститиПоляToolStripMenuItem
             // 
             очиститиПоляToolStripMenuItem.Name = "очиститиПоляToolStripMenuItem";
-            очиститиПоляToolStripMenuItem.Size = new Size(195, 26);
+            очиститиПоляToolStripMenuItem.Size = new Size(224, 26);
             очиститиПоляToolStripMenuItem.Text = "Очистити поля";
             очиститиПоляToolStripMenuItem.Click += очиститиПоляToolStripMenuItem_Click;
-            // 
-            // справкаToolStripMenuItem
-            // 
-            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { содержимоеToolStripMenuItem, toolStripSeparator5, опрограммеToolStripMenuItem });
-            справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            справкаToolStripMenuItem.Size = new Size(81, 24);
-            справкаToolStripMenuItem.Text = "&Справка";
-            // 
-            // содержимоеToolStripMenuItem
-            // 
-            содержимоеToolStripMenuItem.Name = "содержимоеToolStripMenuItem";
-            содержимоеToolStripMenuItem.Size = new Size(198, 26);
-            содержимоеToolStripMenuItem.Text = "&Содержимое";
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(195, 6);
-            // 
-            // опрограммеToolStripMenuItem
-            // 
-            опрограммеToolStripMenuItem.Name = "опрограммеToolStripMenuItem";
-            опрограммеToolStripMenuItem.Size = new Size(198, 26);
-            опрограммеToolStripMenuItem.Text = "&О программе…";
             // 
             // filmLibraryBindingSource
             // 
@@ -392,6 +274,7 @@
             RatingBox.Name = "RatingBox";
             RatingBox.Size = new Size(254, 27);
             RatingBox.TabIndex = 18;
+            RatingBox.KeyPress += RatingBox_KeyPress;
             // 
             // label8
             // 
@@ -424,6 +307,7 @@
             SizeBox.Name = "SizeBox";
             SizeBox.Size = new Size(254, 27);
             SizeBox.TabIndex = 20;
+            SizeBox.KeyPress += SizeBox_KeyPress;
             // 
             // label10
             // 
@@ -450,13 +334,6 @@
             buttonLikeThis.Text = "Знайти схожі на цей";
             buttonLikeThis.UseVisualStyleBackColor = true;
             buttonLikeThis.Click += buttonLikeThis_Click;
-            // 
-            // хочуПереглянутиToolStripMenuItem
-            // 
-            хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
-            хочуПереглянутиToolStripMenuItem.Size = new Size(224, 26);
-            хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
-            хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -520,25 +397,10 @@
         private TextBox DirectorBox;
         private ListBox ResultListBox;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem файлToolStripMenuItem;
-        private ToolStripMenuItem создатьToolStripMenuItem;
-        private ToolStripMenuItem открытьToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator;
-        private ToolStripMenuItem сохранитьToolStripMenuItem;
-        private ToolStripMenuItem сохранитькакToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem печатьToolStripMenuItem;
-        private ToolStripMenuItem предварительныйпросмотрToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem выходToolStripMenuItem;
         private ToolStripMenuItem изменитьToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem инструментыToolStripMenuItem;
-        private ToolStripMenuItem справкаToolStripMenuItem;
-        private ToolStripMenuItem содержимоеToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripMenuItem опрограммеToolStripMenuItem;
         private BindingSource filmBindingSource;
         private BindingSource filmLibraryBindingSource;
         private Label label7;
@@ -550,7 +412,6 @@
         private Label label10;
         private TextBox StudioBox;
         private ToolStripMenuItem очиститиПоляToolStripMenuItem;
-        private ToolStripMenuItem очиститиToolStripMenuItem;
         private ToolStripMenuItem seenToolStripMenuItem;
         private Button buttonLikeThis;
         private ToolStripMenuItem хочуПереглянутиToolStripMenuItem;
