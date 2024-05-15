@@ -8,7 +8,6 @@ namespace WinForms_Filmoteka
     public partial class MainForm : Form
     {
         FilmLibrary Library = new FilmLibrary("filmLibrary.json");
-        List<FilmLibrary> Collections = new List<FilmLibrary>();
         FilmLibrary wantTo = new FilmLibrary("wantTo.json");
         FilmLibrary seen = new FilmLibrary("seen.json");
 
@@ -159,6 +158,8 @@ namespace WinForms_Filmoteka
                 Studio = StudioBox.Text.Trim(),
                 Cast = ActorBox.Text.Trim()
             });
+
+            filmBindingSource.DataSource = Library.films;
         }
 
         private void î÷èñòèòèÏîëÿToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,9 +181,15 @@ namespace WinForms_Filmoteka
             if (ResultListBox.SelectedItems.Count > 0)
             {
                 Film film = ResultListBox.SelectedItem as Film;
-                var filmInfoForm = new SelectedForm(film, Library, Collections, seen, wantTo);
+                var filmInfoForm = new SelectedForm(film, Library, seen, wantTo);
                 filmInfoForm.Show();
             }
+
+        }
+
+        public void SelectedForm_FormClosed()
+        {
+            filmBindingSource.DataSource = Library.films;
         }
 
         private void seenToolStripMenuItem_Click(object sender, EventArgs e)

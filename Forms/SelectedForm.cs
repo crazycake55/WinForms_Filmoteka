@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace WinForms_Filmoteka.Forms
 {
     public partial class SelectedForm : Form
     {
+        MainForm main = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
         Film film = new Film();
         FilmLibrary library = new FilmLibrary("");
-        List<FilmLibrary> collections = new List<FilmLibrary>();
         FilmLibrary Seen = new FilmLibrary("");
         FilmLibrary WantTo = new FilmLibrary("");
-        public SelectedForm(Film film, FilmLibrary Library, List<FilmLibrary> Collections, FilmLibrary seen, FilmLibrary wantTo)
+        public SelectedForm(Film film, FilmLibrary Library, FilmLibrary seen, FilmLibrary wantTo)
         {
             InitializeComponent();
 
-            this.collections = Collections;
             this.library = Library;
             this.film = film;
             this.Seen = seen;
@@ -117,6 +117,11 @@ namespace WinForms_Filmoteka.Forms
         {
             library.RemoveFilm(film);
             this.Close();
+        }
+
+        private void SelectedForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            main.SelectedForm_FormClosed();
         }
     }
 }

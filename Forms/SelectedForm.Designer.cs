@@ -307,6 +307,7 @@
             MinimumSize = new Size(818, 497);
             Name = "SelectedForm";
             Text = "Ваш фільм";
+            FormClosed += SelectedForm_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
