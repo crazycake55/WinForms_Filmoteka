@@ -54,6 +54,8 @@
             toolStripSeparator4 = new ToolStripSeparator();
             seenToolStripMenuItem = new ToolStripMenuItem();
             хочуПереглянутиToolStripMenuItem = new ToolStripMenuItem();
+            поділитисьПереглянутимToolStripMenuItem = new ToolStripMenuItem();
+            поділитисьБажанимToolStripMenuItem = new ToolStripMenuItem();
             инструментыToolStripMenuItem = new ToolStripMenuItem();
             очиститиПоляToolStripMenuItem = new ToolStripMenuItem();
             filmLibraryBindingSource = new BindingSource(components);
@@ -224,20 +226,20 @@
             // зберегтиЯкToolStripMenuItem
             // 
             зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            зберегтиЯкToolStripMenuItem.Size = new Size(224, 26);
+            зберегтиЯкToolStripMenuItem.Size = new Size(202, 26);
             зберегтиЯкToolStripMenuItem.Text = "Зберегти як...";
             зберегтиЯкToolStripMenuItem.Click += зберегтиЯкToolStripMenuItem_Click;
             // 
             // завантажитиЗToolStripMenuItem
             // 
             завантажитиЗToolStripMenuItem.Name = "завантажитиЗToolStripMenuItem";
-            завантажитиЗToolStripMenuItem.Size = new Size(224, 26);
+            завантажитиЗToolStripMenuItem.Size = new Size(202, 26);
             завантажитиЗToolStripMenuItem.Text = "Завантажити з...";
             завантажитиЗToolStripMenuItem.Click += завантажитиЗToolStripMenuItem_Click;
             // 
             // изменитьToolStripMenuItem
             // 
-            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem });
+            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem, поділитисьПереглянутимToolStripMenuItem, поділитисьБажанимToolStripMenuItem });
             изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             изменитьToolStripMenuItem.Size = new Size(81, 24);
             изменитьToolStripMenuItem.Text = "&Колекції";
@@ -245,26 +247,40 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(213, 6);
+            toolStripSeparator3.Size = new Size(270, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(213, 6);
+            toolStripSeparator4.Size = new Size(270, 6);
             // 
             // seenToolStripMenuItem
             // 
             seenToolStripMenuItem.Name = "seenToolStripMenuItem";
-            seenToolStripMenuItem.Size = new Size(216, 26);
+            seenToolStripMenuItem.Size = new Size(273, 26);
             seenToolStripMenuItem.Text = "Переглянув";
             seenToolStripMenuItem.Click += seenToolStripMenuItem_Click;
             // 
             // хочуПереглянутиToolStripMenuItem
             // 
             хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
-            хочуПереглянутиToolStripMenuItem.Size = new Size(216, 26);
+            хочуПереглянутиToolStripMenuItem.Size = new Size(273, 26);
             хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
             хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
+            // 
+            // поділитисьПереглянутимToolStripMenuItem
+            // 
+            поділитисьПереглянутимToolStripMenuItem.Name = "поділитисьПереглянутимToolStripMenuItem";
+            поділитисьПереглянутимToolStripMenuItem.Size = new Size(273, 26);
+            поділитисьПереглянутимToolStripMenuItem.Text = "Поділитись переглянутим";
+            поділитисьПереглянутимToolStripMenuItem.Click += поділитисьПереглянутимToolStripMenuItem_Click;
+            // 
+            // поділитисьБажанимToolStripMenuItem
+            // 
+            поділитисьБажанимToolStripMenuItem.Name = "поділитисьБажанимToolStripMenuItem";
+            поділитисьБажанимToolStripMenuItem.Size = new Size(273, 26);
+            поділитисьБажанимToolStripMenuItem.Text = "Поділитись бажаним";
+            поділитисьБажанимToolStripMenuItem.Click += поділитисьБажанимToolStripMenuItem_Click;
             // 
             // инструментыToolStripMenuItem
             // 
@@ -443,5 +459,7 @@
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem зберегтиЯкToolStripMenuItem;
         private ToolStripMenuItem завантажитиЗToolStripMenuItem;
+        private ToolStripMenuItem поділитисьПереглянутимToolStripMenuItem;
+        private ToolStripMenuItem поділитисьБажанимToolStripMenuItem;
     }
 }

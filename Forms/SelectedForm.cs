@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,8 +74,8 @@ namespace WinForms_Filmoteka.Forms
             film.Genres = GenreBox.Text.Trim();
             film.Director = DirectorBox.Text.Trim();
             film.Location = LocationBox.Text.Trim();
-            film.Rating = float.Parse(RatingBox.Text.Trim());
-            film.Size = double.Parse(SizeBox.Text.Trim());
+            film.Rating = float.TryParse(RatingBox.Text.Trim(), out float parsedValue) ? parsedValue : (float?)null;
+            film.Size = double.TryParse(SizeBox.Text.Trim(), out double parsedValue1) ? parsedValue1 : (double?)null;
             film.Studio = StudioBox.Text.Trim();
             film.Cast = ActorBox.Text.Trim();
             film.Summary = SummaryBox.Text.Trim();

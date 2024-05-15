@@ -18,6 +18,7 @@ namespace WinForms_Filmoteka
             wantTo.LoadLibraryFromFile();
             seen.LoadLibraryFromFile();
             InitializeComponent();
+            filmBindingSource.DataSource = Library.films;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,8 +34,8 @@ namespace WinForms_Filmoteka
             if (!string.IsNullOrEmpty(NameBox.Text.Trim()))
             {
                 var nameResult = Library.SearchFilms(NameBox.Text.Trim(), "", "", "", "", null, "", "", null);
-                
-                foreach(var film in nameResult)
+
+                foreach (var film in nameResult)
                 {
                     if (!result.Contains(film))
                     {
@@ -159,6 +160,17 @@ namespace WinForms_Filmoteka
                 Cast = ActorBox.Text.Trim()
             });
 
+            NameBox.Text = string.Empty;
+            YearBox.Text = string.Empty;
+            GenreBox.Text = string.Empty;
+            DirectorBox.Text = string.Empty;
+            LocationBox.Text = string.Empty;
+            RatingBox.Text = string.Empty;
+            SizeBox.Text = string.Empty;
+            StudioBox.Text = string.Empty;
+            ActorBox.Text = string.Empty;
+            SummaryBox.Text = string.Empty;
+
             filmBindingSource.DataSource = Library.films;
         }
 
@@ -280,6 +292,16 @@ namespace WinForms_Filmoteka
             {
                 e.Handled = true;
             }
+        }
+
+        private void ïîä³ëèòèñüÏåðåãëÿíóòèìToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveObjectToJson(seen);
+        }
+
+        private void ïîä³ëèòèñüÁàæàíèìToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveObjectToJson(wantTo);
         }
     }
 }
