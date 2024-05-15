@@ -50,6 +50,8 @@
             NameBox = new TextBox();
             buttonSave = new Button();
             comboBox1 = new ComboBox();
+            buttonEnable = new Button();
+            buttonDelete = new Button();
             SuspendLayout();
             // 
             // label10
@@ -251,12 +253,34 @@
             comboBox1.Size = new Size(308, 28);
             comboBox1.TabIndex = 45;
             // 
+            // buttonEnable
+            // 
+            buttonEnable.Location = new Point(26, 343);
+            buttonEnable.Name = "buttonEnable";
+            buttonEnable.Size = new Size(227, 60);
+            buttonEnable.TabIndex = 46;
+            buttonEnable.Text = "Почати редагування";
+            buttonEnable.UseVisualStyleBackColor = true;
+            buttonEnable.Click += buttonEnable_Click;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(286, 343);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(227, 60);
+            buttonDelete.TabIndex = 47;
+            buttonDelete.Text = "Видалити з бібліотеки";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
             // SelectedForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(236, 234, 193);
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonDelete);
+            Controls.Add(buttonEnable);
             Controls.Add(comboBox1);
             Controls.Add(buttonSave);
             Controls.Add(label10);
@@ -282,7 +306,7 @@
             MaximumSize = new Size(818, 497);
             MinimumSize = new Size(818, 497);
             Name = "SelectedForm";
-            Text = "Form2";
+            Text = "Ваш фільм";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -311,5 +335,7 @@
         private TextBox NameBox;
         private Button buttonSave;
         private ComboBox comboBox1;
+        private Button buttonEnable;
+        private Button buttonDelete;
     }
 }

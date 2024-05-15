@@ -1,3 +1,6 @@
+using System.Linq;
+using System.Text.Json;
+using System.Windows.Forms;
 using WinForms_Filmoteka.Forms;
 
 namespace WinForms_Filmoteka
@@ -31,57 +34,112 @@ namespace WinForms_Filmoteka
             if (!string.IsNullOrEmpty(NameBox.Text.Trim()))
             {
                 var nameResult = Library.SearchFilms(NameBox.Text.Trim(), "", "", "", "", null, "", "", null);
-                result.AddRange(nameResult);
+                
+                foreach(var film in nameResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(YearBox.Text.Trim()))
             {
                 var yearResult = Library.SearchFilms("", YearBox.Text.Trim(), "", "", "", null, "", "", null);
-                result.AddRange(yearResult);
+                foreach (var film in yearResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(GenreBox.Text.Trim()))
             {
                 var genreResult = Library.SearchFilms("", "", GenreBox.Text.Trim(), "", "", null, "", "", null);
-                result.AddRange(genreResult);
+                foreach (var film in genreResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(DirectorBox.Text.Trim()))
             {
                 var directorResult = Library.SearchFilms("", "", "", DirectorBox.Text.Trim(), "", null, "", "", null);
-                result.AddRange(directorResult);
+                foreach (var film in directorResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(LocationBox.Text.Trim()))
             {
                 var locationResult = Library.SearchFilms("", "", "", "", LocationBox.Text.Trim(), null, "", "", null);
-                result.AddRange(locationResult);
+                foreach (var film in locationResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(SizeBox.Text.Trim()))
             {
                 double.TryParse(SizeBox.Text.Trim(), out double num);
                 var sizeResult = Library.SearchFilms("", "", "", "", "", num, "", "", null);
-                result.AddRange(sizeResult);
+                foreach (var film in sizeResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(ActorBox.Text.Trim()))
             {
                 var actorResult = Library.SearchFilms("", "", "", "", "", null, ActorBox.Text.Trim(), "", null);
-                result.AddRange(actorResult);
+                foreach (var film in actorResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(StudioBox.Text.Trim()))
             {
                 var studioResult = Library.SearchFilms("", "", "", "", "", null, "", StudioBox.Text.Trim(), null);
-                result.AddRange(studioResult);
+                foreach (var film in studioResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(RatingBox.Text.Trim()))
             {
                 float.TryParse(RatingBox.Text.Trim(), out float numb);
                 var ratingResult = Library.SearchFilms("", "", "", "", "", null, "", "", numb);
-                result.AddRange(ratingResult);
+                foreach (var film in ratingResult)
+                {
+                    if (!result.Contains(film))
+                    {
+                        result.Add(film);
+                    }
+                }
             }
 
             filmBindingSource.DataSource = result;
@@ -96,8 +154,8 @@ namespace WinForms_Filmoteka
                 Director = DirectorBox.Text.Trim(),
                 Location = LocationBox.Text.Trim(),
                 Summary = SummaryBox.Text.Trim(),
-                Rating = float.Parse(RatingBox.Text.Trim()),
-                Size = double.Parse(SizeBox.Text.Trim()),
+                Rating = float.TryParse(RatingBox.Text.Trim(), out float parsedValue) ? parsedValue : (float?)null,
+                Size = double.TryParse(SizeBox.Text.Trim(), out double parsedValue1) ? parsedValue1 : (double?)null,
                 Studio = StudioBox.Text.Trim(),
                 Cast = ActorBox.Text.Trim()
             });
@@ -156,7 +214,62 @@ namespace WinForms_Filmoteka
 
         private void SizeBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Á·ÂÂ„ÚËﬂÍToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveObjectToJson(Library);
+        }
+
+        private void SaveObjectToJson(FilmLibrary obj)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+                saveFileDialog.RestoreDirectory = false;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+
+                    string json = JsonSerializer.Serialize(obj.films);
+
+                    File.WriteAllText(filePath, json);
+
+                    MessageBox.Show("Œ·'∫ÍÚ Á·ÂÂÊÂÌÓ Û JSON Ù‡ÈÎ.");
+                }
+            }
+        }
+
+        private void LoadObjectFromJson()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    Library.filePath = selectedFilePath;
+                    Library.LoadLibraryFromFile();
+                    MessageBox.Show("¬˚·‡ÌÓ JSON-Ù‡ÈÎ: " + selectedFilePath);
+                }
+            }
+        }
+
+        private void Á‡‚‡ÌÚ‡ÊËÚË«ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadObjectFromJson();
+        }
+
+        private void YearBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }

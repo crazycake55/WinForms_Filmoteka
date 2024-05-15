@@ -46,6 +46,9 @@
             ResultListBox = new ListBox();
             filmBindingSource = new BindingSource(components);
             menuStrip1 = new MenuStrip();
+            файлToolStripMenuItem = new ToolStripMenuItem();
+            зберегтиЯкToolStripMenuItem = new ToolStripMenuItem();
+            завантажитиЗToolStripMenuItem = new ToolStripMenuItem();
             изменитьToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
@@ -101,6 +104,7 @@
             YearBox.Name = "YearBox";
             YearBox.Size = new Size(254, 27);
             YearBox.TabIndex = 3;
+            YearBox.KeyPress += YearBox_KeyPress;
             // 
             // GenreBox
             // 
@@ -203,12 +207,33 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { изменитьToolStripMenuItem, инструментыToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, изменитьToolStripMenuItem, инструментыToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 28);
             menuStrip1.TabIndex = 15;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { зберегтиЯкToolStripMenuItem, завантажитиЗToolStripMenuItem });
+            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            файлToolStripMenuItem.Size = new Size(59, 24);
+            файлToolStripMenuItem.Text = "Файл";
+            // 
+            // зберегтиЯкToolStripMenuItem
+            // 
+            зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
+            зберегтиЯкToolStripMenuItem.Size = new Size(224, 26);
+            зберегтиЯкToolStripMenuItem.Text = "Зберегти як...";
+            зберегтиЯкToolStripMenuItem.Click += зберегтиЯкToolStripMenuItem_Click;
+            // 
+            // завантажитиЗToolStripMenuItem
+            // 
+            завантажитиЗToolStripMenuItem.Name = "завантажитиЗToolStripMenuItem";
+            завантажитиЗToolStripMenuItem.Size = new Size(224, 26);
+            завантажитиЗToolStripMenuItem.Text = "Завантажити з...";
+            завантажитиЗToolStripMenuItem.Click += завантажитиЗToolStripMenuItem_Click;
             // 
             // изменитьToolStripMenuItem
             // 
@@ -220,24 +245,24 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(221, 6);
+            toolStripSeparator3.Size = new Size(213, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(221, 6);
+            toolStripSeparator4.Size = new Size(213, 6);
             // 
             // seenToolStripMenuItem
             // 
             seenToolStripMenuItem.Name = "seenToolStripMenuItem";
-            seenToolStripMenuItem.Size = new Size(224, 26);
+            seenToolStripMenuItem.Size = new Size(216, 26);
             seenToolStripMenuItem.Text = "Переглянув";
             seenToolStripMenuItem.Click += seenToolStripMenuItem_Click;
             // 
             // хочуПереглянутиToolStripMenuItem
             // 
             хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
-            хочуПереглянутиToolStripMenuItem.Size = new Size(224, 26);
+            хочуПереглянутиToolStripMenuItem.Size = new Size(216, 26);
             хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
             хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
             // 
@@ -251,7 +276,7 @@
             // очиститиПоляToolStripMenuItem
             // 
             очиститиПоляToolStripMenuItem.Name = "очиститиПоляToolStripMenuItem";
-            очиститиПоляToolStripMenuItem.Size = new Size(224, 26);
+            очиститиПоляToolStripMenuItem.Size = new Size(195, 26);
             очиститиПоляToolStripMenuItem.Text = "Очистити поля";
             очиститиПоляToolStripMenuItem.Click += очиститиПоляToolStripMenuItem_Click;
             // 
@@ -415,5 +440,8 @@
         private ToolStripMenuItem seenToolStripMenuItem;
         private Button buttonLikeThis;
         private ToolStripMenuItem хочуПереглянутиToolStripMenuItem;
+        private ToolStripMenuItem файлToolStripMenuItem;
+        private ToolStripMenuItem зберегтиЯкToolStripMenuItem;
+        private ToolStripMenuItem завантажитиЗToolStripMenuItem;
     }
 }

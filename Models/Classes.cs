@@ -12,15 +12,15 @@ public class Film
     public string Director { get; set; }
     public string Cast { get; set; }
     public string Summary { get; set; }
-    public float Rating { get; set; }
+    public float? Rating { get; set; }
     public string Location { get; set; }
-    public double Size { get; set; }
+    public double? Size { get; set; }
 }
 
 public class FilmLibrary
 {
     public List<Film> films;
-    private string filePath;
+    public string filePath;
 
     public FilmLibrary(string path)
     {

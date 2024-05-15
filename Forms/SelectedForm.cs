@@ -49,6 +49,20 @@ namespace WinForms_Filmoteka.Forms
             {
                 comboBox1.SelectedIndex = 0;
             }
+
+            NameBox.Enabled = false;
+            YearBox.Enabled = false;
+            GenreBox.Enabled = false;
+            DirectorBox.Enabled = false;
+            LocationBox.Enabled = false;
+            RatingBox.Enabled = false;
+            SizeBox.Enabled = false;
+            StudioBox.Enabled = false;
+            ActorBox.Enabled = false;
+            SummaryBox.Enabled = false;
+            buttonSave.Enabled = false;
+            comboBox1.Enabled = false;
+            buttonDelete.Enabled = false;
         }
 
 
@@ -65,15 +79,15 @@ namespace WinForms_Filmoteka.Forms
             film.Cast = ActorBox.Text.Trim();
             film.Summary = SummaryBox.Text.Trim();
             library.SaveLibraryToFile();
-            if(comboBox1.SelectedIndex == 1)
+            if (comboBox1.SelectedIndex == 1)
             {
                 Seen.AddFilm(film);
             }
-            else if(comboBox1.SelectedIndex == 2)
+            else if (comboBox1.SelectedIndex == 2)
             {
                 WantTo.AddFilm(film);
             }
-            else if(comboBox1.SelectedIndex == 0)
+            else if (comboBox1.SelectedIndex == 0)
             {
                 WantTo.RemoveFilm(film);
                 Seen.RemoveFilm(film);
@@ -82,5 +96,27 @@ namespace WinForms_Filmoteka.Forms
             this.Close();
         }
 
+        private void buttonEnable_Click(object sender, EventArgs e)
+        {
+            NameBox.Enabled = true;
+            YearBox.Enabled = true;
+            GenreBox.Enabled = true;
+            DirectorBox.Enabled = true;
+            LocationBox.Enabled = true;
+            RatingBox.Enabled = true;
+            SizeBox.Enabled = true;
+            StudioBox.Enabled = true;
+            ActorBox.Enabled = true;
+            SummaryBox.Enabled = true;
+            buttonSave.Enabled = true;
+            comboBox1.Enabled = true;
+            buttonDelete.Enabled = true;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            library.RemoveFilm(film);
+            this.Close();
+        }
     }
 }
