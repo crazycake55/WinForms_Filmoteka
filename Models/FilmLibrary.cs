@@ -12,7 +12,6 @@ public class FilmLibrary
     {
         films = new List<Film>();
         filePath = path;
-        /*this.Fill();*/
     }
 
     public void AddFilm(Film film)
@@ -63,8 +62,8 @@ public class FilmLibrary
         foreach (var f in films)
         {
             if (f.Title.Contains(Title) && f.ReleaseYear.Contains(ReleaseYear) && f.Genres.Contains(Genre) 
-                && CheckIfAllElementsInString(Location.Split(", "), f.Location) && f.Director.Contains(Director) && (f.Size == Size || Size == null) 
-                && CheckIfAllElementsInString(Cast.Split(", "), f.Cast) && f.Studio.Contains(Studio) && (f.Rating == Rating || Rating == null))
+                && CheckIfAllElementsInString(Location.Split(", "), f.Location) && f.Director.Contains(Director) && (f.Size >= Size || Size == null) 
+                && CheckIfAllElementsInString(Cast.Split(", "), f.Cast) && f.Studio.Contains(Studio) && (f.Rating >= Rating || Rating == null))
             {
                 result.Add(f);
             }

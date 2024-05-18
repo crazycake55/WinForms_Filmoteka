@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            button1 = new Button();
-            button2 = new Button();
+            buttonSearch = new Button();
+            buttonAddFilm = new Button();
             NameBox = new TextBox();
             YearBox = new TextBox();
             GenreBox = new TextBox();
@@ -47,17 +47,19 @@
             filmBindingSource = new BindingSource(components);
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
-            зберегтиЯкToolStripMenuItem = new ToolStripMenuItem();
-            завантажитиЗToolStripMenuItem = new ToolStripMenuItem();
+            saveAsToolStripMenuItem = new ToolStripMenuItem();
+            loadFromToolStripMenuItem = new ToolStripMenuItem();
+            saveSearchResultToolStripMenuItem = new ToolStripMenuItem();
             изменитьToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
             seenToolStripMenuItem = new ToolStripMenuItem();
-            хочуПереглянутиToolStripMenuItem = new ToolStripMenuItem();
-            поділитисьПереглянутимToolStripMenuItem = new ToolStripMenuItem();
-            поділитисьБажанимToolStripMenuItem = new ToolStripMenuItem();
+            wantToToolStripMenuItem = new ToolStripMenuItem();
+            shareSeenToolStripMenuItem = new ToolStripMenuItem();
+            shareWantToToolStripMenuItem = new ToolStripMenuItem();
             инструментыToolStripMenuItem = new ToolStripMenuItem();
-            очиститиПоляToolStripMenuItem = new ToolStripMenuItem();
+            ClearFormToolStripMenuItem = new ToolStripMenuItem();
+            deleteLibraryToolStripMenuItem = new ToolStripMenuItem();
             filmLibraryBindingSource = new BindingSource(components);
             label7 = new Label();
             RatingBox = new TextBox();
@@ -73,25 +75,25 @@
             ((System.ComponentModel.ISupportInitialize)filmLibraryBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // buttonSearch
             // 
-            button1.Location = new Point(523, 248);
-            button1.Name = "button1";
-            button1.Size = new Size(215, 57);
-            button1.TabIndex = 0;
-            button1.Text = "Пошук";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonSearch.Location = new Point(562, 248);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(215, 57);
+            buttonSearch.TabIndex = 0;
+            buttonSearch.Text = "Пошук";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
             // 
-            // button2
+            // buttonAddFilm
             // 
-            button2.Location = new Point(523, 374);
-            button2.Name = "button2";
-            button2.Size = new Size(215, 57);
-            button2.TabIndex = 1;
-            button2.Text = "Внести новий фільм";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonAddFilm.Location = new Point(562, 374);
+            buttonAddFilm.Name = "buttonAddFilm";
+            buttonAddFilm.Size = new Size(215, 57);
+            buttonAddFilm.TabIndex = 1;
+            buttonAddFilm.Text = "Внести новий фільм";
+            buttonAddFilm.UseVisualStyleBackColor = true;
+            buttonAddFilm.Click += buttonAddFilm_Click;
             // 
             // NameBox
             // 
@@ -218,28 +220,35 @@
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { зберегтиЯкToolStripMenuItem, завантажитиЗToolStripMenuItem });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { saveAsToolStripMenuItem, loadFromToolStripMenuItem, saveSearchResultToolStripMenuItem });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(59, 24);
             файлToolStripMenuItem.Text = "Файл";
             // 
-            // зберегтиЯкToolStripMenuItem
+            // saveAsToolStripMenuItem
             // 
-            зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            зберегтиЯкToolStripMenuItem.Size = new Size(202, 26);
-            зберегтиЯкToolStripMenuItem.Text = "Зберегти як...";
-            зберегтиЯкToolStripMenuItem.Click += зберегтиЯкToolStripMenuItem_Click;
+            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            saveAsToolStripMenuItem.Size = new Size(318, 26);
+            saveAsToolStripMenuItem.Text = "Зберегти бібліотеку як...";
+            saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
-            // завантажитиЗToolStripMenuItem
+            // loadFromToolStripMenuItem
             // 
-            завантажитиЗToolStripMenuItem.Name = "завантажитиЗToolStripMenuItem";
-            завантажитиЗToolStripMenuItem.Size = new Size(202, 26);
-            завантажитиЗToolStripMenuItem.Text = "Завантажити з...";
-            завантажитиЗToolStripMenuItem.Click += завантажитиЗToolStripMenuItem_Click;
+            loadFromToolStripMenuItem.Name = "loadFromToolStripMenuItem";
+            loadFromToolStripMenuItem.Size = new Size(318, 26);
+            loadFromToolStripMenuItem.Text = "Завантажити з...";
+            loadFromToolStripMenuItem.Click += loadFromToolStripMenuItem_Click;
+            // 
+            // saveSearchResultToolStripMenuItem
+            // 
+            saveSearchResultToolStripMenuItem.Name = "saveSearchResultToolStripMenuItem";
+            saveSearchResultToolStripMenuItem.Size = new Size(318, 26);
+            saveSearchResultToolStripMenuItem.Text = "Зберегти результати пошуку як...";
+            saveSearchResultToolStripMenuItem.Click += saveSearchResultToolStripMenuItem_Click;
             // 
             // изменитьToolStripMenuItem
             // 
-            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, хочуПереглянутиToolStripMenuItem, поділитисьПереглянутимToolStripMenuItem, поділитисьБажанимToolStripMenuItem });
+            изменитьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, seenToolStripMenuItem, wantToToolStripMenuItem, shareSeenToolStripMenuItem, shareWantToToolStripMenuItem });
             изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             изменитьToolStripMenuItem.Size = new Size(81, 24);
             изменитьToolStripMenuItem.Text = "&Колекції";
@@ -261,40 +270,47 @@
             seenToolStripMenuItem.Text = "Переглянув";
             seenToolStripMenuItem.Click += seenToolStripMenuItem_Click;
             // 
-            // хочуПереглянутиToolStripMenuItem
+            // wantToToolStripMenuItem
             // 
-            хочуПереглянутиToolStripMenuItem.Name = "хочуПереглянутиToolStripMenuItem";
-            хочуПереглянутиToolStripMenuItem.Size = new Size(273, 26);
-            хочуПереглянутиToolStripMenuItem.Text = "Хочу переглянути";
-            хочуПереглянутиToolStripMenuItem.Click += хочуПереглянутиToolStripMenuItem_Click;
+            wantToToolStripMenuItem.Name = "wantToToolStripMenuItem";
+            wantToToolStripMenuItem.Size = new Size(273, 26);
+            wantToToolStripMenuItem.Text = "Хочу переглянути";
+            wantToToolStripMenuItem.Click += wantToToolStripMenuItem_Click;
             // 
-            // поділитисьПереглянутимToolStripMenuItem
+            // shareSeenToolStripMenuItem
             // 
-            поділитисьПереглянутимToolStripMenuItem.Name = "поділитисьПереглянутимToolStripMenuItem";
-            поділитисьПереглянутимToolStripMenuItem.Size = new Size(273, 26);
-            поділитисьПереглянутимToolStripMenuItem.Text = "Поділитись переглянутим";
-            поділитисьПереглянутимToolStripMenuItem.Click += поділитисьПереглянутимToolStripMenuItem_Click;
+            shareSeenToolStripMenuItem.Name = "shareSeenToolStripMenuItem";
+            shareSeenToolStripMenuItem.Size = new Size(273, 26);
+            shareSeenToolStripMenuItem.Text = "Поділитись переглянутим";
+            shareSeenToolStripMenuItem.Click += shareSeenToolStripMenuItem_Click;
             // 
-            // поділитисьБажанимToolStripMenuItem
+            // shareWantToToolStripMenuItem
             // 
-            поділитисьБажанимToolStripMenuItem.Name = "поділитисьБажанимToolStripMenuItem";
-            поділитисьБажанимToolStripMenuItem.Size = new Size(273, 26);
-            поділитисьБажанимToolStripMenuItem.Text = "Поділитись бажаним";
-            поділитисьБажанимToolStripMenuItem.Click += поділитисьБажанимToolStripMenuItem_Click;
+            shareWantToToolStripMenuItem.Name = "shareWantToToolStripMenuItem";
+            shareWantToToolStripMenuItem.Size = new Size(273, 26);
+            shareWantToToolStripMenuItem.Text = "Поділитись бажаним";
+            shareWantToToolStripMenuItem.Click += shareWantToToolStripMenuItem_Click;
             // 
             // инструментыToolStripMenuItem
             // 
-            инструментыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { очиститиПоляToolStripMenuItem });
+            инструментыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ClearFormToolStripMenuItem, deleteLibraryToolStripMenuItem });
             инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
             инструментыToolStripMenuItem.Size = new Size(108, 24);
             инструментыToolStripMenuItem.Text = "&Інструменти";
             // 
-            // очиститиПоляToolStripMenuItem
+            // ClearFormToolStripMenuItem
             // 
-            очиститиПоляToolStripMenuItem.Name = "очиститиПоляToolStripMenuItem";
-            очиститиПоляToolStripMenuItem.Size = new Size(195, 26);
-            очиститиПоляToolStripMenuItem.Text = "Очистити поля";
-            очиститиПоляToolStripMenuItem.Click += очиститиПоляToolStripMenuItem_Click;
+            ClearFormToolStripMenuItem.Name = "ClearFormToolStripMenuItem";
+            ClearFormToolStripMenuItem.Size = new Size(294, 26);
+            ClearFormToolStripMenuItem.Text = "Очистити поля";
+            ClearFormToolStripMenuItem.Click += ClearFormToolStripMenuItem_Click;
+            // 
+            // deleteLibraryToolStripMenuItem
+            // 
+            deleteLibraryToolStripMenuItem.Name = "deleteLibraryToolStripMenuItem";
+            deleteLibraryToolStripMenuItem.Size = new Size(294, 26);
+            deleteLibraryToolStripMenuItem.Text = "Видалити поточну бібліотеку";
+            deleteLibraryToolStripMenuItem.Click += deleteLibraryБібліотекуToolStripMenuItem_Click;
             // 
             // filmLibraryBindingSource
             // 
@@ -368,7 +384,7 @@
             // 
             // buttonLikeThis
             // 
-            buttonLikeThis.Location = new Point(523, 311);
+            buttonLikeThis.Location = new Point(562, 311);
             buttonLikeThis.Name = "buttonLikeThis";
             buttonLikeThis.Size = new Size(215, 57);
             buttonLikeThis.TabIndex = 24;
@@ -404,14 +420,14 @@
             Controls.Add(GenreBox);
             Controls.Add(YearBox);
             Controls.Add(NameBox);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonAddFilm);
+            Controls.Add(buttonSearch);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             MaximumSize = new Size(818, 497);
             MinimumSize = new Size(818, 497);
             Name = "MainForm";
-            Text = "Кінотека";
+            Text = "Фільмотека";
             ((System.ComponentModel.ISupportInitialize)filmBindingSource).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -422,8 +438,8 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button buttonSearch;
+        private Button buttonAddFilm;
         private TextBox NameBox;
         private TextBox YearBox;
         private TextBox GenreBox;
@@ -452,14 +468,16 @@
         private TextBox SizeBox;
         private Label label10;
         private TextBox StudioBox;
-        private ToolStripMenuItem очиститиПоляToolStripMenuItem;
+        private ToolStripMenuItem ClearFormToolStripMenuItem;
         private ToolStripMenuItem seenToolStripMenuItem;
         private Button buttonLikeThis;
-        private ToolStripMenuItem хочуПереглянутиToolStripMenuItem;
+        private ToolStripMenuItem wantToToolStripMenuItem;
         private ToolStripMenuItem файлToolStripMenuItem;
-        private ToolStripMenuItem зберегтиЯкToolStripMenuItem;
-        private ToolStripMenuItem завантажитиЗToolStripMenuItem;
-        private ToolStripMenuItem поділитисьПереглянутимToolStripMenuItem;
-        private ToolStripMenuItem поділитисьБажанимToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem loadFromToolStripMenuItem;
+        private ToolStripMenuItem shareSeenToolStripMenuItem;
+        private ToolStripMenuItem shareWantToToolStripMenuItem;
+        private ToolStripMenuItem saveSearchResultToolStripMenuItem;
+        private ToolStripMenuItem deleteLibraryToolStripMenuItem;
     }
 }

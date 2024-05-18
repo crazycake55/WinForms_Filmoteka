@@ -21,7 +21,7 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = Library.films;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
             var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim(), double.TryParse(SizeBox.Text.Trim(), out double num) ? num : null, ActorBox.Text.Trim(), StudioBox.Text.Trim(), float.TryParse(RatingBox.Text.Trim(), out float numb) ? numb : null);
 
@@ -144,7 +144,7 @@ namespace WinForms_Filmoteka
 
             filmBindingSource.DataSource = result;
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonAddFilm_Click(object sender, EventArgs e)
         {
             Library.AddFilm(new Film
             {
@@ -174,7 +174,7 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = Library.films;
         }
 
-        private void î÷èñòèòèÏîëÿToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClearFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NameBox.Text = string.Empty;
             YearBox.Text = string.Empty;
@@ -211,7 +211,7 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = result;
         }
 
-        private void õî÷óÏåğåãëÿíóòèToolStripMenuItem_Click(object sender, EventArgs e)
+        private void wantToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = wantTo.SearchFilms("", "", "", "", "", null, "", "", null);
 
@@ -239,7 +239,7 @@ namespace WinForms_Filmoteka
             }
         }
 
-        private void çáåğåãòèßêToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(Library);
         }
@@ -281,7 +281,7 @@ namespace WinForms_Filmoteka
             }
         }
 
-        private void çàâàíòàæèòèÇToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadObjectFromJson();
         }
@@ -294,14 +294,27 @@ namespace WinForms_Filmoteka
             }
         }
 
-        private void ïîä³ëèòèñüÏåğåãëÿíóòèìToolStripMenuItem_Click(object sender, EventArgs e)
+        private void shareSeenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(seen);
         }
 
-        private void ïîä³ëèòèñüÁàæàíèìToolStripMenuItem_Click(object sender, EventArgs e)
+        private void shareWantToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(wantTo);
+        }
+
+        private void saveSearchResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilmLibrary temp = new FilmLibrary("");
+            temp.films = (List<Film>)filmBindingSource.DataSource;
+            SaveObjectToJson(temp);
+        }
+
+        private void deleteLibraryÁ³áë³îòåêóToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Library.ClearLibrary();
+            SelectedForm_FormClosed();
         }
     }
 }
