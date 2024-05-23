@@ -21,12 +21,17 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = Library.films;
         }
 
+        /*Після натиску кнопки «Пошук» зчитує дані, введені у полях цієї форми, та на їх основі
+        виводить новий список фільмів, які підходять під всі критерії пошуку.*/
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             var result = Library.SearchFilms(NameBox.Text.Trim(), YearBox.Text.Trim(), GenreBox.Text.Trim(), DirectorBox.Text.Trim(), LocationBox.Text.Trim(), double.TryParse(SizeBox.Text.Trim(), out double num) ? num : null, ActorBox.Text.Trim(), StudioBox.Text.Trim(), float.TryParse(RatingBox.Text.Trim(), out float numb) ? numb : null);
 
             filmBindingSource.DataSource = result;
         }
+
+        /*після натиску кнопки «Знайти схожі на цей» зчитує дані, введені у полях цієї форми, та на
+        їх основі виводить новий список фільмів, які підходять під один чи більше критеріїв пошуку.*/
         private void buttonLikeThis_Click(object sender, EventArgs e)
         {
             var result = new List<Film>();
@@ -144,6 +149,9 @@ namespace WinForms_Filmoteka
 
             filmBindingSource.DataSource = result;
         }
+
+        /*після натиску кнопки «Внести новий фільм» зчитує дані, введені у полях цієї форми, та на
+        їх основі додає до основної бібліотеки новий фільм з веденими у поля даними.*/
         private void buttonAddFilm_Click(object sender, EventArgs e)
         {
             Library.AddFilm(new Film
@@ -174,6 +182,8 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = Library.films;
         }
 
+        /*після натиску кнопки «Очистити поля» з вкладки на стрічці меню
+        «Інструменти» очищає всі поля вводу на формі.*/
         private void ClearFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NameBox.Text = string.Empty;
@@ -188,6 +198,7 @@ namespace WinForms_Filmoteka
             SummaryBox.Text = string.Empty;
         }
 
+        /*після подвійного кліку на фільм зі списку відкриває іншу форму з інформацією про фільм*/
         private void ResultListBox_DoubleClick(object sender, EventArgs e)
         {
             if (ResultListBox.SelectedItems.Count > 0)
@@ -199,11 +210,14 @@ namespace WinForms_Filmoteka
 
         }
 
+        /*оновлює джерело списку фільмів*/
         public void SelectedForm_FormClosed()
         {
             filmBindingSource.DataSource = Library.films;
         }
 
+        /*після натиску кнопки «Переглянув» з вкладки на стрічці меню «Колекції» змінює
+        видимий список фільмів на список переглянутих.*/
         private void seenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = seen.SearchFilms("", "", "", "", "", null, "", "", null);
@@ -211,6 +225,8 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = result;
         }
 
+        /*після натиску кнопки «Хочу переглянути» з вкладки на стрічці меню «Колекції»
+        змінює видимий список фільмів на список бажаних до перегляду.*/
         private void wantToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = wantTo.SearchFilms("", "", "", "", "", null, "", "", null);
@@ -218,6 +234,8 @@ namespace WinForms_Filmoteka
             filmBindingSource.DataSource = result;
         }
 
+        /*відслідковує ввід у поле з значенням рейтингу фільму, щоб користувач міг ввести
+        лише цифри та одну кому.*/
         private void RatingBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
@@ -231,6 +249,7 @@ namespace WinForms_Filmoteka
             }
         }
 
+        /*відслідковує ввід у поле з значенням часу фільму, щоб користувач міг ввести лише цифри.*/
         private void SizeBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -239,11 +258,15 @@ namespace WinForms_Filmoteka
             }
         }
 
+        /*після натиску кнопки «Зберегти бібліотеку як...» з вкладки на стрічці меню
+        «Файл» зберігає поточну бібліотеку у JSON файл за шляхом, який вкаже користувач.*/
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(Library);
         }
 
+        /*отримує на вхід бібліотеку фільмів та зберігає її у JSON файл, шлях до якого вкаже користувач.Є
+        частиною інших методів, які пов’язані зі збереженням списків у JSON файли.*/
         private void SaveObjectToJson(FilmLibrary obj)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -264,6 +287,7 @@ namespace WinForms_Filmoteka
             }
         }
 
+        /*завантажує бібліотеку фільмів з файлу, який знаходиться за шляхом у полі «filePath».*/
         private void LoadObjectFromJson()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -281,11 +305,14 @@ namespace WinForms_Filmoteka
             }
         }
 
+        /*після натиску кнопки «Завантажити з...» з вкладки на стрічці меню
+        «Файл» заміняє поточну бібліотеку на іншу, з файлу за шляхом, який вкаже користувач.*/
         private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadObjectFromJson();
         }
 
+        /*відслідковує ввід у поле з значенням року фільму, щоб користувач міг ввести лише цифри.*/
         private void YearBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -294,16 +321,23 @@ namespace WinForms_Filmoteka
             }
         }
 
+        /*після натиску кнопки «Поділитись переглянутим» з вкладки на стрічці меню «Колекції» зберігає
+        список переглянутих фільмів у JSON файл за шляхом, який вкаже користувач.*/
         private void shareSeenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(seen);
         }
 
+        /*після натиску кнопки «Поділитись бажаним» з вкладки на стрічці меню «Колекції» зберігає
+        список бажаних до перегляду фільмів у JSON файл за шляхом, який вкаже користувач.*/
         private void shareWantToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveObjectToJson(wantTo);
         }
 
+        /*після натиску кнопки «Зберегти результат пошуку як...» з вкладки на
+        стрічці меню «Файл» зберігає поточний результат пошуку у JSON файл
+        за шляхом, який вкаже користувач.*/
         private void saveSearchResultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilmLibrary temp = new FilmLibrary("");
@@ -311,7 +345,9 @@ namespace WinForms_Filmoteka
             SaveObjectToJson(temp);
         }
 
-        private void deleteLibraryБібліотекуToolStripMenuItem_Click(object sender, EventArgs e)
+        /*після натиску кнопки «Видалити поточну бібліотеку» з вкладки на
+        стрічці меню «Інструменти» очищає поточну бібліотеку.*/
+        private void deleteLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Library.ClearLibrary();
             SelectedForm_FormClosed();

@@ -310,7 +310,7 @@
             deleteLibraryToolStripMenuItem.Name = "deleteLibraryToolStripMenuItem";
             deleteLibraryToolStripMenuItem.Size = new Size(294, 26);
             deleteLibraryToolStripMenuItem.Text = "Видалити поточну бібліотеку";
-            deleteLibraryToolStripMenuItem.Click += deleteLibraryБібліотекуToolStripMenuItem_Click;
+            deleteLibraryToolStripMenuItem.Click += deleteLibraryToolStripMenuItem_Click;
             // 
             // filmLibraryBindingSource
             // 

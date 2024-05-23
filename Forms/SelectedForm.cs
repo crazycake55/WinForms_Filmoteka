@@ -19,6 +19,10 @@ namespace WinForms_Filmoteka.Forms
         FilmLibrary library = new FilmLibrary("");
         FilmLibrary Seen = new FilmLibrary("");
         FilmLibrary WantTo = new FilmLibrary("");
+
+        /*відповідає за створення форми, передає посилання на бібліотеки з головної форми та передає у
+        текстові поля інформацію про фільм, також вимикає можливість редагування для всіх елементів 
+        форми, окрім кнопки для початку редагування.*/
         public SelectedForm(Film film, FilmLibrary Library, FilmLibrary seen, FilmLibrary wantTo)
         {
             InitializeComponent();
@@ -66,7 +70,7 @@ namespace WinForms_Filmoteka.Forms
             buttonDelete.Enabled = false;
         }
 
-
+        /*після натиску кнопки «Зберегти зміни» зберігає нові дані про фільм з полів вводу.*/
         private void buttonSave_Click(object sender, EventArgs e)
         {
             film.Title = NameBox.Text.Trim();
@@ -97,6 +101,7 @@ namespace WinForms_Filmoteka.Forms
             this.Close();
         }
 
+        /*після натиску кнопки «Почати редагування» відкриває доступ до зміни інформації у полях*/
         private void buttonEnable_Click(object sender, EventArgs e)
         {
             NameBox.Enabled = true;
@@ -114,12 +119,16 @@ namespace WinForms_Filmoteka.Forms
             buttonDelete.Enabled = true;
         }
 
+        /*після натиску кнопки «Видалити з бібліотеки» видаляє поточний фільм з відкритої бібліотеки.*/
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             library.RemoveFilm(film);
             this.Close();
         }
 
+        /*викликається або після натиску однієї з кнопок «Видалити з бібліотеки» та
+        «Зберегти зміни» або під час закриття форми іншими способами, звертається до методу головної форми, щоб
+        оновити список фільмів на екрані користувача.*/
         private void SelectedForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             main.SelectedForm_FormClosed();

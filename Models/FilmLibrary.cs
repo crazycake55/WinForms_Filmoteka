@@ -8,44 +8,31 @@ public class FilmLibrary
     public List<Film> films;
     public string filePath;
 
+    /*отримує на вхід шлях до файла збереження та створює новий екземпляр бібліотеки
+    фільмів з пустим списком.*/
     public FilmLibrary(string path)
     {
         films = new List<Film>();
         filePath = path;
     }
 
+    /*отримує на вхід фільм з певними параметрами та додає його до списка фільмів поточної бібліотеки.*/
     public void AddFilm(Film film)
     {
         films.Add(film);
         SaveLibraryToFile();
     }
 
-    public void Fill()
-    {
-        for(int i = 0; i <= 10; i++)
-        {
-            this.AddFilm(new Film
-            {
-                Title = $"Title{i}",
-                Studio = $"Studio{i}",
-                Genres = "Action, Drama",
-                ReleaseYear = $"{i}",
-                Director = $"Director{i}",
-                Cast = "actor1, actor2",
-                Summary = "summary",
-                Rating = i,
-                Location = $"Location{i}",
-                Size = i * 60
-            });
-        }
-    }
-
+    /*зберігає дані про список фільмів у файл, який ми зберігаємо за шляхом вказаним у
+    полі «filePath».*/
     public void SaveLibraryToFile()
     {
         string json = JsonSerializer.Serialize(films);
         File.WriteAllText(filePath, json);
     }
 
+    /*перевіряє, чи існує файл за шляхом у «filePath», і якщо він існує – завантажує з нього
+    збережений список фільмів замість поточної бібліотеки.*/
     public void LoadLibraryFromFile()
     {
         if (File.Exists(filePath))
@@ -55,6 +42,9 @@ public class FilmLibrary
         }
     }
 
+    /*отримує на вхід параметри, за
+    якими виконує пошук фільмів у полі «films», після чого
+    повертає список потрібних фільмів.*/
     public List<Film> SearchFilms(string Title, string ReleaseYear, string Genre, string Director, string Location, double? Size, string Cast, string Studio, float? Rating)
     {
 
@@ -71,6 +61,8 @@ public class FilmLibrary
         return result;
     }
 
+    /*потрібен при пошуку фільмів для параметрів «Cast» та «Location».
+    Повертає булеве значення.*/
     static bool CheckIfAllElementsInString(string[] array, string searchString)
     {
         foreach (var item in array)
@@ -83,12 +75,14 @@ public class FilmLibrary
         return true;
     }
 
+    /*видаляє вказаний фільм з нашої бібліотеки.*/
     public void RemoveFilm(Film film)
     {
         films.Remove(film);
         SaveLibraryToFile();
     }
 
+    /*видаляє всі фільми з поточної бібліотеки.*/
     public void ClearLibrary()
     {
         films.Clear();
